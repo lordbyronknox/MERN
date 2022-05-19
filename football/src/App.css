@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.content-container {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  text-align: center;
+  background-image: url('./img/football.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tabs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0;
+  
+  background-color: #000000;
+}
+
+.tab-leagues {
+  /* margin-right: 10px; */
+  width: 300px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  border-right: 5px solid #cccccc;
+}
+
+.standings-container {
+  border-style:double;
+  border-width: 6px;
+}
+
+.tab-standings {
+  width: 300px;
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.leagues-container {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  background-image: url('./img/football2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.league-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 50px 0;
+  background: transparent;
+}
+
+.league-div > img {
+  width: 250px;
+}
+
+.league-div:hover {
+  transform: scale(1.1);
+}
+
+select {
+  padding: 10px;
+  font-size: 19px;
+  background-color: #e6e3e3;
+}
+
+.select-fields {
+  font-size: 20px;
+}
+
+.ranking-div {
+  text-align: left;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5px 0;
+  background-color: #e6e3e3;
+  border-style: groove;
+}
+
+.ranking-div-inner {
+  margin: 8px 0;
+}
+
+.logo-small {
+  width: 25px;
+}
+
+.footer {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  color: #ffffff;
+}
