@@ -15,9 +15,9 @@ const Content = () => {
         <div className="tab-standings" onClick={() => setActive(false)}>
           <h2 style={{ color: !active ? "#c20114" : null }}>Standings</h2>
         </div>
-        <div className="tab-stats" onClick={() => setActive(false)}>
+        {/* <div className="tab-stats" onClick={() => setActive(false)}>
           <h2 style={{ color: !active ? "#c20114" : null }}>Stats</h2>
-        </div>
+        </div> */}
       </div>
 
       {active ? <Leagues /> : <Standings />}
