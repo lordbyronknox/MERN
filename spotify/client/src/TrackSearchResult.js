@@ -1,5 +1,3 @@
-
-/* eslint-disable */
 import React from "react"
 
 export default function TrackSearchResult({ track, chooseTrack }) {
@@ -11,8 +9,8 @@ export default function TrackSearchResult({ track, chooseTrack }) {
     <div
       className="d-flex m-2 align-items-center"
       style={{ cursor: "pointer" }}
-      onClick={handlePlay} > 
-      
+      onClick={handlePlay}
+    >
       <img src={track.albumUrl} alt="" style={{ height: "64px", width: "64px" }} />
       <div className="ml-3">
         <div>{track.title}</div>
