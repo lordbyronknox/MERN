@@ -26,7 +26,7 @@ export default function useAuth(code) {
     if (!refreshToken || !expiresIn) return
     const interval = setInterval(() => {
       axios
-        .post("http://localhost:3001/refresh", {
+        .post("http://localhost:3000/refresh", {
           refreshToken,
         })
         .then(res => {
@@ -36,7 +36,7 @@ export default function useAuth(code) {
         .catch(() => {
           window.location = "/"
         })
-    }, (expiresIn - 60) * 1000)
+    }, (expiresIn - 40) * 1000)
 
     return () => clearInterval(interval)
   }, [refreshToken, expiresIn])
