@@ -13,32 +13,34 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}${genre ? "genre=" + genre : ""
+          `lists${type ? "?type=" + type : ""}${
+            genre ? "&genre=" + genre : ""
           }`,
-        {
+          {
             headers: {
               token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTVjZTNhZDE5ZmVhMDcyNDEyYjEzYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1Mzk5MTY1NSwiZXhwIjoxNjU0NDIzNjU1fQ.vAKEln_y5i8hXmW4kNDKy06y4I3aYFhqg95EFjyJ41s"
+              "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTVjZTNhZDE5ZmVhMDcyNDEyYjEzYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1Mzk5MTY1NSwiZXhwIjoxNjU0NDIzNjU1fQ.vAKEln_y5i8hXmW4kNDKy06y4I3aYFhqg95EFjyJ41s",
+              // "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
             },
           }
-          );
-  // setList(res.data)
-}catch (err) {
-  console.log(err)
-}
+        );
+        setLists(res.data);
+      } catch (err) {
+        console.log(err);
+      }
     };
-getRandomLists();
+    getRandomLists();
   }, [type, genre]);
 
-return (
-  <div className="home">
-    <Navbar />
-    <Featured type={type} />
-    {lists.map((list) => (
-      <List list={list} />
-    ))}
-      </div>
-);
+  return (
+    <div className="home">
+      <Navbar />
+      <Featured type={type} setGenre={setGenre} />
+      {lists.map((list) => (
+        <List list={list} />
+      ))}
+    </div>
+  );
 };
 
 export default Home;
