@@ -5,7 +5,7 @@ import data from './data'
 import { useState } from 'react';
 
 function App() {
-  const { products } = data;    //extract 'products' from data.
+  const { products } = data;    //extract 'products' from data. (props to be used by children components)
   const [cartItems, setCartItems] = useState([]); //set default as empty array.
 
   //function to add to cart.
