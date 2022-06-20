@@ -20,6 +20,7 @@ function App() {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
+  
   //function to remove item from cart.
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
