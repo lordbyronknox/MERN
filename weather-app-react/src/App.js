@@ -2,20 +2,34 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 function App() {
-  const [data, setData] = useState({})
-  const [location, setLocation] = useState('')
+  const [data, setData] = useState({});
+  const [location, setLocation] = useState('');
+  const [backgroundImage, setBackgroundImage] = useState('app');
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=b453e5c550649bebb421904b03571781`
-  const urlLondon = `https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=b453e5c550649bebb421904b03571781`
-
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=b453e5c550649bebb421904b03571781`;
+  const urlLondon = `https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=b453e5c550649bebb421904b03571781`;
+  const urlTokyo = `https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=b453e5c550649bebb421904b03571781`;
+  const urlNewYork = `https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=b453e5c550649bebb421904b03571781`;
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
       axios.get(url).then((response) => {
         setData(response.data)
         console.log(response.data)
+        if (data.weather[0].description === 'overcast clouds') {
+          setBackgroundImage('overcast')
+        }
+        else if (data.weather[0].description === 'clear sky') {
+          setBackgroundImage('clear')
+        }
+        else if (data.weather[0].description === 'clouds') {
+          setBackgroundImage('clouds')
+        } else {
+          setBackgroundImage('app')
+        };
       })
-      setLocation('')
+      setLocation('');
+      setBackgroundImage(backgroundImage);
     }
   }
 
@@ -25,23 +39,43 @@ function App() {
         setData(response.data)
         console.log(response.data)
       })
-      setLocation('')
+      // setLocation('')
     }
   }
 
+  const getTokyo = (event) => {
+    if (event.key === 'Enter') {
+      axios.get(urlTokyo).then((response) => {
+        setData(response.data)
+        console.log(response.data)
+      })
+      // setLocation('')
+    }
+  }
+
+  const getNewYork= (event) => {
+    if (event.key === 'Enter') {
+      axios.get(urlNewYork).then((response) => {
+        setData(response.data)
+        console.log(response.data)
+      })
+      // setLocation('')
+    }
+  }
 
   return (
 
-    <div className="app">
+    <div className={`${backgroundImage}`}>
 
-      <div className="search">
+      <div className="search row">
         <input
           value={location}
           onChange={event => setLocation(event.target.value)}
           onKeyPress={searchLocation}
           placeholder='Enter Location'
           type="text" />
-      </div>
+          </div>
+     
       <div className="container">
         <div className="top">
           <div className="location">
@@ -51,29 +85,21 @@ function App() {
             {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
           </div>
           <div className="description">
-            {data.weather ? <p>{data.weather[0].main}</p> : null}
+            {data.weather ? <p>{data.weather[0].description}</p> : null}
           </div>
 
+        <aside className="col-2">
+          <div className="city">London</div>
 
+          <div className="city">Tokyo</div>
 
-          <div className='city'>
-            <p><input
-              value={location}
-              onChange={event => setLocation(event.target.value)}
-              onLoadStart={getLondon}
-              placeholder='London'
-              type="text" /></p>
+          <div className="city">New York</div>
 
-            <p>{data.name}</p>
-          </div>
-          <div className="temp">
-            {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
-          </div>
+        </aside>
 
-          <p>city 2</p>
-          <p>city 3</p>
         </div>
-      </div>
+        </div>
+      
 
 
 
